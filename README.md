@@ -1,5 +1,13 @@
 # MPLACE
 
+# Creacion de Usuario en MySQL
+
+```mysql
+CREATE USER myUser@localhost IDENTIFIED BY 'myPassword#1';
+GRANT ALL PRIVILEGES ON * . * TO myUser@localhost;
+FLUSH PRIVILEGES;
+```
+
 ## Comandos Basicos Ubuntu
 ls: Lista los archivos y directorios en el directorio actual.
 
