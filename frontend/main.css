@@ -93,9 +93,22 @@ header .logo {
 */
 main {
     margin: 20px;
-    box-shadow: 5px 5px 5px #DBDBDB;
+    box-shadow: 0 4px 4px #DBDBDB;
     border: 1px solid #DBDBDB;
     border-radius: 10px;
+}
+
+main::before{
+    content: "";
+    background-color: #8B4CB5;
+    height: 25%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -20px;
+    z-index: -1;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
 main .image img {
