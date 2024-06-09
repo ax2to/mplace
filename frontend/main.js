@@ -1,10 +1,9 @@
 // obtener datos del json file
 let data = []
 
-
-
 async function getItems() {
     console.log("iniciando la llamada de items")
+
     // obtener datos del API
     data = await getApiData();
 
@@ -51,4 +50,47 @@ async function getApiData() {
     }
 
     return [];
+}
+
+async function getItemDetail(productId) {
+    console.log("obtener informacion de producto: ", productId)
+
+    let data = {}
+
+    data = await getApiItemData()
+    console.log("data es: ", data)
+
+    const mainEl = document.getElementById('main')
+    const titleEl = document.getElementById('title')
+    const priceEl = document.getElementById('price')
+
+    titleEl.innerHTML = data[0].title;
+    priceEl.innerHTML = data[0].price;
+
+    mainEl.style.display = 'block'
+}
+
+async function getApiItemData() {
+    console.log('api para obtener informacion de producto')
+
+    const loaderEl = document.getElementById('loader')
+
+    try {
+        loaderEl.style.display = 'block'
+
+
+        const endpoint = "http://localhost:3100/api/products/" + productId;
+
+        const response = await fetch(endpoint);
+        const product = await response.json();
+
+        return product;
+    } catch (error) {
+        console.log("error cargando el producsto", error)
+
+        const errorEl = document.getElementById('error')
+        errorEl.style.display = 'block'
+    } finally {
+        loaderEl.style.display = 'none'
+    }
 }

@@ -96,6 +96,7 @@ main {
     box-shadow: 0 4px 4px #DBDBDB;
     border: 1px solid #DBDBDB;
     border-radius: 10px;
+    display: none;
 }
 
 main::before{

@@ -16,6 +16,14 @@
 
     <script src="https://kit.fontawesome.com/b6ca2eeb80.js" crossorigin="anonymous"></script>
     <script src="main.js"></script>
+    <script>
+        let params = new URLSearchParams(window.location.search);
+        let productId = params.get('product');
+
+        document.addEventListener("DOMContentLoaded", (event) => {
+            getItemDetail(productId);
+        });
+    </script>
 </head>
 
 <body>
@@ -35,15 +43,13 @@
 
     <div id="error" class="loader">Ha ocurrido un error, intento de nuevo mas tarde.</div>
 
-    <div id="abc"></div>
-
-    <main>
+    <main id="main">
         <div class="image">
             <img alt="image" src="images/sample.jpg">
         </div>
         <div class="content">
-            <h1 class="title">Product Name</h1>
-            <h2 class="price">$99.99 USD</h2>
+            <h1 id="title" class="title"></h1>
+            <h2 id="price" class="price"></h2>
             <p class="description">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
