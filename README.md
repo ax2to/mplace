@@ -8,6 +8,11 @@ GRANT ALL PRIVILEGES ON * . * TO myUser@localhost;
 FLUSH PRIVILEGES;
 ```
 
+## Actualizar filas en MySQL
+```mysql
+UPDATE products SET image = "image.png" WHERE id = 1;
+```
+
 ## Comandos Basicos Ubuntu
 ls: Lista los archivos y directorios en el directorio actual.
 
