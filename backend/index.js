@@ -8,7 +8,8 @@ const port = 3100
 app.use(express.json())
 app.use(cors())
 
-// endpoint products
+// endpoint products index -> /api/products
+// endpoint product search -> /api/products?search={termino}
 app.get('/api/products', (req, res) => {
     // Create the connection to database
     const connection = mysql.createConnection({
@@ -18,12 +19,26 @@ app.get('/api/products', (req, res) => {
         database: 'mplace_app',
     });
 
-    // A simple SELECT query
+    // get search params
+    const search = req.query.search;
+    console.log('el termino buscado es: ', search);
+
+    // build query
+    let query;
+
+    if (search != undefined) {
+        query = `SELECT * FROM products WHERE title like '%${search}%' or description like '%${search}%'`
+    } else {
+        query = 'SELECT * FROM `products`'
+    }
+    console.log('Query form products', query);
+
+    // get products from database
     connection.query(
-        'SELECT * FROM `products`',
+        query,
         function (err, results, fields) {
-            console.log(results); // results contains rows returned by server
-            console.log(fields); // fields contains extra meta data about results, if available
+            //console.log(results); // results contains rows returned by server
+            //console.log(fields); // fields contains extra meta data about results, if available
 
             res.send(results)
         }
