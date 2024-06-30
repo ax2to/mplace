@@ -18,7 +18,8 @@
     <script src="main.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", (event) => {
-            getItems()
+            getItems();
+            addSearchBehavior();
         });
     </script>
 </head>
@@ -26,10 +27,14 @@
 <body>
     <header>
         <div class="drawer"><i class="fas fa-bars"></i></div>
-        <div class="logo">
+        <div id="logo" class="logo">
             <img src="images/mplace-logo.svg">
         </div>
-        <div class="search"><i class="fas fa-search"></i></div>
+        <div id="searchForm" class="search_form">
+            <input id="searchInput" type="text" placeholder="Buscar..." />
+            <span>X</span>
+        </div>
+        <div id="searchIcon" class="search"><i class="fas fa-search"></i></div>
         <div class="filter"><i class="fas fa-filter"></i></div>
     </header>
 

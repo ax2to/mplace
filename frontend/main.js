@@ -1,14 +1,16 @@
 // obtener datos del json file
 let data = []
 
-async function getItems() {
+async function getItems(search = null) {
     console.log("iniciando la llamada de items")
+    console.log("el valor de search es: ", search);
 
     // obtener datos del API
-    data = await getApiData();
+    data = await getApiData(search);
 
     // agregar datos al html
     let cardsEl = document.getElementById('cards')
+    cardsEl.innerHTML = '';
 
     data.forEach((element) => {
         console.log(element.title)
@@ -30,13 +32,20 @@ async function getItems() {
     })
 }
 
-async function getApiData() {
+async function getApiData(search = null) {
     const loaderEl = document.getElementById('loader')
 
     try {
         loaderEl.style.display = 'block'
 
-        const response = await fetch("http://localhost:3100/api/products");
+        let endpoint;
+        if (search === null) {
+            endpoint = 'http://localhost:3100/api/products';
+        } else {
+            endpoint = `http://localhost:3100/api/products?search=${search}`;
+        }
+
+        const response = await fetch(endpoint);
         const products = await response.json();
 
         return products;
@@ -93,4 +102,31 @@ async function getApiItemData() {
     } finally {
         loaderEl.style.display = 'none'
     }
+}
+
+function addSearchBehavior() {
+    // get search icon element
+    const searchIconEl = document.getElementById('searchIcon');
+
+    // add event listener (clik)
+    searchIconEl.addEventListener('click', function () {
+        // hide logo
+        const logoEl = document.getElementById('logo');
+        logoEl.style.display = 'none';
+
+        // hide search icon
+        searchIconEl.style.display = 'none';
+
+        // display search
+        const searchFormEl = document.getElementById('searchForm');
+        searchFormEl.style.display = 'block';
+    });
+
+    // add event listener (search)
+    const searchInputEl = document.getElementById('searchInput');
+    searchInputEl.addEventListener('keyup', function (event) {
+        if (event.keyCode === 13) {
+            getItems(searchInputEl.value)
+        }
+    })
 }

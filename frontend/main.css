@@ -37,6 +37,36 @@ header {
 
 header .logo {
     flex-grow: 1;
+    display: block;
+}
+
+header .search_form{
+    flex-grow: 1;
+    position: relative;
+    display: none;
+
+    & input{
+        width: calc(100% - 20px);
+        border: none;
+        border-radius: 5px;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        padding: 5px 10px;
+        color: #574961;
+    }
+
+    & span{
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        color: #574961;
+        cursor: pointer;
+    }
+}
+
+header .search{
+    display: block;
+    cursor: pointer;
 }
 
 /**
