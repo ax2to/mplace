@@ -6,6 +6,7 @@ const app = express()
 const port = 3100
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
 // endpoint products index -> /api/products
@@ -65,6 +66,37 @@ app.get('/api/products/:id', (req, res) => {
         //console.log(fields); // fields contains extra meta data about results, if available
 
         res.send(results)
+    });
+})
+
+// endpoint login
+app.post('/api/login', (req, res) => {
+    // init
+    let data = { auth: false, user: null };
+
+    // Create the connection to database
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'alan',
+        password: '1234',
+        database: 'mplace_app',
+    });
+
+    // receive data (email and password)
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // validate data (query to database)
+    // SELECT * FROM users where email = 'alan.tello@gmail.com' and password = '1234';
+    const query = 'SELECT id, email FROM users WHERE email = ? AND password = ?';
+    connection.query(query, [email, password], function (error, response) {
+        if (response.length > 0) {
+            data.auth = true;
+            data.user = response[0];
+        }
+
+        // response
+        res.send(data);
     });
 })
 
