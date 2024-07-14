@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mysql = require('mysql2')
+const config = require('./config')
 
 const app = express()
 const port = 3100
@@ -13,12 +14,7 @@ app.use(cors())
 // endpoint product search -> /api/products?search={termino}
 app.get('/api/products', (req, res) => {
     // Create the connection to database
-    const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'alan',
-        password: '1234',
-        database: 'mplace_app',
-    });
+    const connection = mysql.createConnection(config.db);
 
     // get search params
     const search = req.query.search;
@@ -49,12 +45,7 @@ app.get('/api/products', (req, res) => {
 // endpoint product detail
 app.get('/api/products/:id', (req, res) => {
     // Create the connection to database
-    const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'alan',
-        password: '1234',
-        database: 'mplace_app',
-    });
+    const connection = mysql.createConnection(config.db);
 
     // product id
     const productId = req.params.id;
@@ -75,12 +66,7 @@ app.post('/api/login', (req, res) => {
     let data = { auth: false, user: null };
 
     // Create the connection to database
-    const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'alan',
-        password: '1234',
-        database: 'mplace_app',
-    });
+    const connection = mysql.createConnection(config.db);
 
     // receive data (email and password)
     const email = req.body.email;
