@@ -130,3 +130,46 @@ function addSearchBehavior() {
         }
     })
 }
+
+async function addLoginEvents() {
+    console.log('addLoginEvents');
+
+    // get form reference
+    const formEl = document.getElementById('loginForm');
+
+    // update submit event
+    formEl.addEventListener('submit', async function (event) {
+        // avoid default behavior
+        event.preventDefault();
+
+        // get form data
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // call api
+        try {
+            const endpoint = 'http://localhost:3100/api/login';
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `email=${email}&password=${password}`
+            });
+
+            let data = await response.json();
+
+            // redirect
+            if (data.auth == true) {
+                window.location.replace("/frontend/admin/index.html");
+            }
+
+            // display fail
+            if (data.auth == false) {
+                const errorEl = document.querySelector('.login form .error');
+                errorEl.style.display = 'block'
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    });
+}

@@ -40,12 +40,12 @@ header .logo {
     display: block;
 }
 
-header .search_form{
+header .search_form {
     flex-grow: 1;
     position: relative;
     display: none;
 
-    & input{
+    & input {
         width: calc(100% - 20px);
         border: none;
         border-radius: 5px;
@@ -55,7 +55,7 @@ header .search_form{
         color: #574961;
     }
 
-    & span{
+    & span {
         position: absolute;
         top: 5px;
         right: 10px;
@@ -64,7 +64,7 @@ header .search_form{
     }
 }
 
-header .search{
+header .search {
     display: block;
     cursor: pointer;
 }
@@ -129,7 +129,7 @@ main {
     display: none;
 }
 
-main::before{
+main::before {
     content: "";
     background-color: #8B4CB5;
     height: 25%;
@@ -168,4 +168,64 @@ main .price {
 main .description {
     margin: 0;
     font-size: 16px;
+}
+
+/**
+    Login
+*/
+.login {
+    margin: 20px;
+    margin-top: 120px;
+
+    & .logo {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    & form {
+        background-color: #8B4CB5;
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        color: white;
+        border-radius: 10px;
+
+        & label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        & input {
+            margin-bottom: 40px;
+            padding: 10px;
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            color: #332F36;
+            border-radius: 10px;
+            border: none;
+        }
+
+        & button {
+            padding: 10px;
+            text-align: center;
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #9D38E0;
+            border-radius: 10px;
+            border: none;
+        }
+
+        & .error {
+            display: none;
+            text-align: center;
+            color: #cf2d3d;
+            background-color: #f8bfc3;
+            padding: 16px 8px;
+            border-radius: 10px;
+        }
+    }
 }
