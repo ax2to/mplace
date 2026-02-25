@@ -66,7 +66,7 @@ async function getItemDetail(productId) {
 
     let data = {}
 
-    data = await getApiItemData()
+    data = await getApiItemData(productId)
     console.log("data es: ", data)
 
     const mainEl = document.getElementById('main')
@@ -79,7 +79,7 @@ async function getItemDetail(productId) {
     mainEl.style.display = 'block'
 }
 
-async function getApiItemData() {
+async function getApiItemData(productId) {
     console.log('api para obtener informacion de producto')
 
     const loaderEl = document.getElementById('loader')
