@@ -22,9 +22,12 @@ app.get('/api/products', (req, res) => {
 
     // build query
     let query;
+    let params = [];
 
     if (search != undefined) {
-        query = `SELECT * FROM products WHERE title like '%${search}%' or description like '%${search}%'`
+        query = 'SELECT * FROM products WHERE title LIKE ? OR description LIKE ?';
+        const term = `%${search}%`;
+        params = [term, term];
     } else {
         query = 'SELECT * FROM `products`'
     }
@@ -33,6 +36,7 @@ app.get('/api/products', (req, res) => {
     // get products from database
     connection.query(
         query,
+        params,
         function (err, results, fields) {
             //console.log(results); // results contains rows returned by server
             //console.log(fields); // fields contains extra meta data about results, if available
