@@ -35,5 +35,5 @@ SELECT 'Meta Quest 2', 'Visor de realidad virtual para juegos y experiencias inm
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE title = 'Meta Quest 2');
 
 INSERT INTO users (email, password)
-SELECT 'demo@mplace.local', '1234'
+SELECT 'demo@mplace.local', '$2b$10$ckCFRbYYqI7X30WxMh7by.zpasuOOWOQ.rNCqkX0JeoSTbvmt1Vuq'
 WHERE NOT EXISTS (SELECT 1 FROM users WHERE email = 'demo@mplace.local');
