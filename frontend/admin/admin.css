@@ -1,0 +1,21 @@
+/**
+    Navigation
+*/
+#main-menu {
+    & ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+
+        & li {
+            & a {}
+        }
+    }
+}
+
+table {
+    width: 100%;
+}

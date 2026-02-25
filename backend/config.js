@@ -1,8 +1,8 @@
 module.exports = {
     db: {
         host: 'localhost',
-        user: 'alan',
-        password: '1234',
+        user: 'victor',
+        password: 'v100',
         database: 'mplace_app',
-    }
+    },
 }
