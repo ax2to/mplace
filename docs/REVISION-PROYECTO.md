@@ -3,6 +3,17 @@
 Esta revision prioriza riesgos y claridad para contexto de aprendizaje.
 No se aplican cambios de codigo en este documento.
 
+## Tabla de seguimiento didactico
+
+| Hallazgo | Issue | Rama | PR | Estado |
+|---|---|---|---|---|
+| SQL Injection en busqueda | [#1](https://github.com/ax2to/mplace/issues/1) | [fix/sql-injection-busqueda](https://github.com/ax2to/mplace/tree/fix/sql-injection-busqueda) | Pendiente | Issue creado, rama remota creada |
+| Credenciales hardcodeadas | [#2](https://github.com/ax2to/mplace/issues/2) | [fix/credenciales-env-backend](https://github.com/ax2to/mplace/tree/fix/credenciales-env-backend) | Pendiente | Issue creado, rama remota creada |
+| Password en texto plano | [#3](https://github.com/ax2to/mplace/issues/3) | [fix/hash-password-login](https://github.com/ax2to/mplace/tree/fix/hash-password-login) | Pendiente | Issue creado, rama remota creada |
+| Falta script `start` | [#4](https://github.com/ax2to/mplace/issues/4) | [chore/script-start-backend](https://github.com/ax2to/mplace/tree/chore/script-start-backend) | Pendiente | Issue creado, rama remota creada |
+| Consistencia docs + setup SQL | [#5](https://github.com/ax2to/mplace/issues/5) | [docs/setup-schema-consistente](https://github.com/ax2to/mplace/tree/docs/setup-schema-consistente) | Pendiente | Issue creado, rama remota creada |
+| Acoplamiento `productId` global | [#6](https://github.com/ax2to/mplace/issues/6) | [fix/product-detail-parametro](https://github.com/ax2to/mplace/tree/fix/product-detail-parametro) | Pendiente | Issue creado, rama remota creada |
+
 ## Hallazgos priorizados
 
 ### 1) ALTO - Riesgo de SQL Injection en busqueda
