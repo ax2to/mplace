@@ -30,6 +30,7 @@ mysql -u root -p < sql/setup.sql
 
 Resultado esperado:
 - Se crea la base `mplace_app` con tablas `products` y `users`.
+- Se insertan 3 productos demo y 1 usuario demo.
 
 ## Paso 4 - Revisar conexion del backend
 Accion:
@@ -85,6 +86,12 @@ Resultado esperado:
 ## Usuario de prueba (creado por setup.sql)
 - Email: `demo@mplace.local`
 - Password: `1234`
+
+Si cambiaste o borraste datos por error, puedes ejecutar otra vez:
+
+```bash
+mysql -u root -p < sql/setup.sql
+```
 
 ## Si algo no aparece
 1. Verifica que backend siga encendido en puerto 3100.

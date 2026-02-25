@@ -1,5 +1,6 @@
 -- MPLACE setup script (entorno local educativo)
 -- Ejecutar con: mysql -u root -p < sql/setup.sql
+-- Inserta datos demo idempotentes: 3 productos + 1 usuario
 
 CREATE DATABASE IF NOT EXISTS mplace_app;
 USE mplace_app;
