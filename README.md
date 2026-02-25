@@ -65,6 +65,11 @@ mysql -u root -p < sql/setup.sql
 
 Si usas otro usuario distinto de `root`, cambia el comando por tu usuario.
 
+Este script crea:
+- Base de datos: `mplace_app`
+- Tabla de productos: `products` (con 3 registros demo)
+- Tabla de usuarios: `users` (con 1 usuario demo)
+
 ### Paso D - Revisar credenciales de conexion
 Este proyecto lee credenciales desde:
 - `backend/config.js`
@@ -108,6 +113,10 @@ Checklist rapido:
 3. La busqueda responde cuando presionas Enter.
 4. Login abre desde `frontend/login.html`.
 5. Con usuario de prueba, redirige a `frontend/admin/index.html`.
+
+Credenciales demo esperadas (creadas por `backend/sql/setup.sql`):
+- Email: `demo@mplace.local`
+- Password: `1234`
 
 Si algo falla, revisa la guia de solucion de problemas en `docs/SOLUCION-PROBLEMAS.md`.
 
