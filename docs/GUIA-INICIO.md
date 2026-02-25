@@ -32,13 +32,18 @@ Resultado esperado:
 - Se crea la base `mplace_app` con tablas `products` y `users`.
 - Se insertan 3 productos demo y 1 usuario demo.
 
-## Paso 4 - Revisar conexion del backend
+## Paso 4 - Configurar conexion del backend
 Accion:
-- Abre `backend/config.js`.
-- Confirma que `host`, `user`, `password`, `database` coinciden con tu MySQL.
+- Entra a `backend/` y copia el ejemplo:
+
+```bash
+cp .env.example .env
+```
+
+- Abre `.env` y completa `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`.
 
 Resultado esperado:
-- Credenciales correctas para tu maquina.
+- Credenciales correctas para tu maquina sin exponer secretos en el codigo.
 
 ## Paso 5 - Iniciar backend
 Accion:

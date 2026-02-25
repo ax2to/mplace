@@ -1,8 +1,10 @@
+require('dotenv').config();
+
 module.exports = {
     db: {
-        host: 'localhost',
-        user: 'victor',
-        password: 'v100',
-        database: 'mplace_app',
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'root',
+        password: process.env.DB_PASSWORD || '',
+        database: process.env.DB_NAME || 'mplace_app',
     },
 }
