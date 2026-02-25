@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const mysql = require('mysql2')
+const bcrypt = require('bcryptjs')
 const config = require('./config')
 
 const app = express()
@@ -77,12 +78,18 @@ app.post('/api/login', (req, res) => {
     const password = req.body.password;
 
     // validate data (query to database)
-    // SELECT * FROM users where email = 'alan.tello@gmail.com' and password = '1234';
-    const query = 'SELECT id, email FROM users WHERE email = ? AND password = ?';
-    connection.query(query, [email, password], function (error, response) {
-        if (response.length > 0) {
-            data.auth = true;
-            data.user = response[0];
+    const query = 'SELECT id, email, password FROM users WHERE email = ?';
+    connection.query(query, [email], function (error, response) {
+        if (!error && response.length > 0) {
+            const isValidPassword = bcrypt.compareSync(password, response[0].password);
+            if (isValidPassword) {
+                data.auth = true;
+                data.user = { id: response[0].id, email: response[0].email };
+            }
+        }
+
+        if (error) {
+            console.log('login error', error)
         }
 
         // response
