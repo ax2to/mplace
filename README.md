@@ -70,11 +70,14 @@ Este script crea:
 - Tabla de productos: `products` (con 3 registros demo)
 - Tabla de usuarios: `users` (con 1 usuario demo)
 
-### Paso D - Revisar credenciales de conexion
-Este proyecto lee credenciales desde:
-- `backend/config.js`
+### Paso D - Configurar credenciales de conexion con `.env`
+En `backend/`, crea tu archivo local desde el ejemplo:
 
-Asegurate de que `user`, `password` y `database` coincidan con tu MySQL local.
+```bash
+cp .env.example .env
+```
+
+Despues abre `.env` y ajusta `DB_HOST`, `DB_USER`, `DB_PASSWORD` y `DB_NAME` segun tu MySQL local.
 
 ## 5) Primer arranque (backend + frontend)
 ### Terminal 1: levantar backend
